@@ -64,7 +64,7 @@ class Soldier(pygame.sprite.Sprite):
 		dx = 0
 		dy = 0
 
-		#assign movement variables if moving left or right
+		#assign movement variables
 		if moving_left:
 			dx = -self.speed
 			self.flip = True
@@ -80,7 +80,7 @@ class Soldier(pygame.sprite.Sprite):
 			self.jump = False
 			self.in_air = True
 
-		#apply gravity
+		#init gravity
 		self.vel_y += Var.GameVar.GRAVITY
 		if self.vel_y > 10:
 			self.vel_y
@@ -240,6 +240,7 @@ class World():
 			Screen.Resolution.screen.blit(tile[0], tile[1])
 
 
+#init ItemBox
 class ItemBox(pygame.sprite.Sprite):
 	def __init__(self, item_type, x, y):
 		pygame.sprite.Sprite.__init__(self)
@@ -264,6 +265,7 @@ class ItemBox(pygame.sprite.Sprite):
 			#delete the item box
 			self.kill()
 
+#init Bullet
 class Bullet(pygame.sprite.Sprite):
 	def __init__(self, x, y, direction):
 		pygame.sprite.Sprite.__init__(self)
@@ -295,6 +297,7 @@ class Bullet(pygame.sprite.Sprite):
 					enemy.health -= 25
 					self.kill()
 
+#init Grenade
 class Grenade(pygame.sprite.Sprite):
 	def __init__(self, x, y, direction):
 		pygame.sprite.Sprite.__init__(self)
@@ -351,6 +354,7 @@ class Grenade(pygame.sprite.Sprite):
 					abs(self.rect.centery - enemy.rect.centery) <  Var.GameVar.TILE_SIZE * 2:
 					enemy.health -= 50
 
+					
 #create empty tile list
 world_data = []
 for row in range( Var.GameVar.ROWS):
